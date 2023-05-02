@@ -5,4 +5,8 @@ class Post {
     this.author = author;
     this.tags = tags;
   }
+  create() {}
+  read() {}
+  update() {}
+  delete() {}
 }
