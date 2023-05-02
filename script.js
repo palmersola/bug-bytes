@@ -12,16 +12,18 @@ class AllPosts {
   constructor() {
     this.postList = [];
   }
-  create() {}
+  create(content, author, tags) {
+    this.postList.push(new Post(content, author, tags));
+  }
 
   read() {
     let posts = [];
     let keys = Object.keys(localStorage);
-    for (let i=0; i < keys.length; i++) {
-        let key = keys[i];
-        let postString = localStorage.getItem(key);
-        let postObject = JSON.parse(postString);
-        posts.push(postObject);
+    for (let i = 0; i < keys.length; i++) {
+      let key = keys[i];
+      let postString = localStorage.getItem(key);
+      let postObject = JSON.parse(postString);
+      posts.push(postObject);
     }
     this.postList = posts;
     return this.postList;
@@ -31,47 +33,43 @@ class AllPosts {
   delete() {}
 }
 
+let allPosts = new AllPosts();
 
-// Create a function to search keywords
-function search(keywords) {
-// Get current posts
-  const posts = document.querySelectorAll('.post');
-// Filter
-  const filteredPosts = Array.from(posts).filter(post => {
-    return keywords.some(keyword => post.textContent.includes(keyword));
-  });
+//DOM manipulation to show all posts
+function displayAllPosts() {
+  let postList = document.getElementById("listOfPosts");
+  postList.innerHTML = "";
+  // let posts = allPosts.read();
 
-// Return filtered
-    return filteredPosts;
+  for (let i = 0; i < allPosts.postList.length; i++) {
+    let post = allPosts.postList[i];
+    let postElement = document.createElement("div");
+
+    postElement.innerHTML = `<div>
+    <span class="postAuthor">${post.author}</span>
+    <span class="postDate">${post.date}</span>
+    </div>
+    <div>
+    <span class="postContent">${post.content}</span>
+    <span class="postTags">${post.tags}</span>
+    </div>`;
+
+    postList.appendChild(postElement);
+  }
+  console.log(allPosts.postList);
 }
 
-// Event listener for search button
-document.getElementById('searchButton').addEventListener('click', () => {
-// Get keywords from the search
-  const keywords = document.getElementById('searchInput').value;
+function create() {
+  const content = document.getElementById("content").value.trim();
+  const author = document.getElementById("author").value.trim();
+  const tags = document.getElementById("tags").value;
+  if (content !== "") {
+    if (content.length <= 150) {
+      allPosts.create(content, author, tags);
+      displayAllPosts();
 
-// Search for posts with keywords
-  const filteredPosts = search(keywords);
-
-// Clear the existing
-  document.getElementById('posts').innerHTML = '';
-
-// Add the filtered posts
-  for (const post of filteredPosts) {
-    document.getElementById('posts').appendChild(post);
-  }
-});
-
-
-function create () {
-  const input = document.getElementById("post").ariaValueMax.trim();
-  if (input !== "") {
-    if (input.length <=250) {
-      posts.push(input);
-      showPosts ();
-
-      document.getElementById("post").value = " "; 
-      document.getElementById("count").textContent = "250";
+      document.getElementById("content").value = " ";
+      // document.getElementById("count").textContent = "150";
     } else {
       alert("Your tweet exceeded the character amount.");
     }
@@ -80,34 +78,41 @@ function create () {
   }
 }
 
-document.getElementById("post").addEventListener("input", function() {
-  const input = this.value;
-  const count = document.getElementById("charCount");
-  count.textContent = 150 - input.length;
+// document.getElementById("content").addEventListener("input", function() {
+//   const input = this.value;
+//   const count = document.getElementById("charCount");
+//   count.textContent = 150 - input.length;
+// });
+
+// Create a function to search keywords
+function search(keywords) {
+  // Get current posts
+  // const posts = document.querySelectorAll(".post");
+  // Filter
+  let filteredPosts = allPosts.postList.filter(post => {
+    console.log(keywords);
+    console.log(post.content);
+    post.content === "test";
+    // return keywords.some(keyword => post.includes(keywords));
+  });
+  console.log(filteredPosts);
+  // Return filtered
+  return filteredPosts;
+}
+
+// Event listener for search button
+document.getElementById("searchButton").addEventListener("click", () => {
+  // Get keywords from the search
+  const keywords = document.getElementById("searchInput").value;
+
+  // Search for posts with keywords
+  const filteredPosts = search(keywords);
+
+  // Clear the existing
+  document.getElementById("listOfPosts").innerHTML = "";
+
+  // Add the filtered posts
+  for (const post of filteredPosts) {
+    document.getElementById("listOfPosts").appendChild(post);
+  }
 });
-
-//DOM manipulation to show all posts
-function displayAllPosts(){
-  let postList = document.getElementById("listsOfPosts");
-  let allPosts = new AllPosts();
-  let posts = allPosts.read();
-
-  for(let i=0; i < posts.length; i++) {
-    let post = posts[i];
-    let postElement = document.createElement("div");
-
-    postElement.innerHTML=
-    `<div>
-      <span class="postTitle">${post.title}</span>
-      <span class="postAuthor">${post.author}</span>
-      <span class="postDate">${post.date}</span>
-    </div>
-    <div>
-      <span class="postContent">${post.content}</span>
-    </div>`;
-
-    postList.appendChild(postElement);
-  };
-};
-
-
