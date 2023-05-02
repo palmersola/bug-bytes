@@ -32,6 +32,37 @@ class AllPosts {
 }
 
 
+// Create a function to search keywords
+function search(keywords) {
+// Get current posts
+  const posts = document.querySelectorAll('.post');
+// Filter
+  const filteredPosts = Array.from(posts).filter(post => {
+    return keywords.some(keyword => post.textContent.includes(keyword));
+  });
+
+// Return filtered
+    return filteredPosts;
+}
+
+// Event listener for search button
+document.getElementById('searchButton').addEventListener('click', () => {
+// Get keywords from the search
+  const keywords = document.getElementById('searchInput').value;
+
+// Search for posts with keywords
+  const filteredPosts = search(keywords);
+
+// Clear the existing
+  document.getElementById('posts').innerHTML = '';
+
+// Add the filtered posts
+  for (const post of filteredPosts) {
+    document.getElementById('posts').appendChild(post);
+  }
+});
+
+
 function create () {
   const input = document.getElementById("post").ariaValueMax.trim();
   if (input !== "") {
@@ -78,4 +109,5 @@ function displayAllPosts(){
     postList.appendChild(postElement);
   };
 };
+
 
