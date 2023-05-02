@@ -7,7 +7,12 @@ class Post {
     this.tags = tags;
   }
   create() {}
+
   read() {}
+
+
+
+
   update() {}
   delete() {}
 }
