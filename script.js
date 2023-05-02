@@ -6,6 +6,12 @@ class Post {
     this.author = author;
     this.tags = tags;
   }
+}
+
+class AllPosts {
+  constructor() {
+    this.postList = [];
+  }
   create() {}
   read() {}
   update() {}
