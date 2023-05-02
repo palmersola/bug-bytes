@@ -11,3 +11,8 @@ class Post {
   update() {}
   delete() {}
 }
+
+function create () {
+  const input = document.getElementById("post").ariaValueMax.trim();
+
+}
