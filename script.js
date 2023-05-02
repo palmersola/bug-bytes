@@ -31,6 +31,30 @@ class AllPosts {
   delete() {}
 }
 
+
+function create () {
+  const input = document.getElementById("post").ariaValueMax.trim();
+  if (input !== "") {
+    if (input.length <=250) {
+      posts.push(input);
+      showPosts ();
+
+      document.getElementById("post").value = " "; 
+      document.getElementById("count").textContent = "250";
+    } else {
+      alert("Your tweet exceeded the character amount.");
+    }
+  } else {
+    alert("Tweet something...");
+  }
+}
+
+document.getElementById("post").addEventListener("input", function() {
+  const input = this.value;
+  const count = document.getElementById("charCount");
+  count.textContent = 150 - input.length;
+});
+
 //DOM manipulation to show all posts
 function displayAllPosts(){
   let postList = document.getElementById("listsOfPosts");
@@ -54,3 +78,4 @@ function displayAllPosts(){
     postList.appendChild(postElement);
   };
 };
+
