@@ -30,15 +30,13 @@ class AllPosts {
   }
 
   update() {}
-  delete() {}
+  delete(id) {
+    this.postList = this.postList.filter(post => post.id !== id);
+    localStorage.removeItem(id);
+  }
 }
 
-
-
 let allPosts = new AllPosts();
-allPosts.create("Blah blah blah blah blah", "John Doe", "tag1, tag2, tag3");
-allPosts.create("This is some text", "Jane Smith", "word, word, word");
-allPosts.create("Another random post", "George Last", "tags, tags, tags");
 
 //DOM manipulation to show all posts
 function displayAllPosts() {
@@ -53,6 +51,7 @@ function displayAllPosts() {
     postElement.innerHTML = `<div>
     <span class="postAuthor">${post.author}</span>
     <span class="postDate">${post.date}</span>
+    <button class="deleteButton" onclick="deletePost(${post.id})">Delete</button>
     </div>
     <div>
     <span class="postContent">${post.content}</span>
@@ -83,6 +82,10 @@ function create() {
   }
 }
 
+function deletePost(id) {
+  allPosts.delete(id);
+  displayAllPosts();
+}
 // document.getElementById("content").addEventListener("input", function() {
 //   const input = this.value;
 //   const count = document.getElementById("charCount");
@@ -104,23 +107,3 @@ function search(keywords) {
   // Return filtered
   return filteredPosts;
 }
-
-// Event listener for search button
-document.getElementById("searchButton").addEventListener("click", () => {
-  // Get keywords from the search
-  const keywords = document.getElementById("searchInput").value;
-
-  // Search for posts with keywords
-  const filteredPosts = search(keywords);
-
-  // Clear the existing
-  document.getElementById("listOfPosts").innerHTML = "";
-
-  // Add the filtered posts
-  for (const post of filteredPosts) {
-    document.getElementById("listOfPosts").appendChild(post);
-  }
-});
-
-
-displayAllPosts();
