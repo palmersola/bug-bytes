@@ -20,30 +20,20 @@
       <div class="container-fluid">
         <a class="navbar-brand">Bug Bytes</a>
         <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search by keywords" aria-label="Search">
+          <input class="form-control me-2" type="search" placeholder="Search posts by tags" aria-label="Search">
           <button class="btn btn-outline-success" id="searchButton" type="submit">Search</button>
         </form>
       </div>
     </nav>
   </div>
 
-    <!-- <h1>BEST GROUP EVA</h1> -->
-
-    <!-- <h3>Search Keywords</h3>
-    <input id="searchInput" type="text" placeholder="Enter keywords" />
-    <button id="searchButton">Search</button> -->
 
     <!--create post-->
 
     <div class="mainBody">
-    <div class="postSection">
-    <!-- <h4>Create Post</h4>
-    <textarea id="author" rows="5" maxlength="30" placeholder="Name"></textarea>
-    <textarea id="content" rows="5" maxlength="150" placeholder="Tweet..tweet.."></textarea>
-    <textarea id="tags" rows="5" maxlength="150" placeholder="add tags"></textarea>
-    <br />
-    <span id="count">150</span> characters remaining <br /><br />
-    <button class="btn btn-outline-success" onclick="create()">Submit</button> -->
+      <h1>Write a post!</h1>
+    <div class="postSection ">
+
     
     <div class="container">
     <div class="mb-3">
@@ -51,7 +41,7 @@
       <input id="author" type="email" class="form-control" id="exampleFormControlInput1" placeholder="Name" required>
     </div>
     <div class="mb-3">
-      <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
+      <label for="exampleFormControlTextarea1" class="form-label">Your thoughts</label>
       <textarea id="content" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Tweet..tweet.."></textarea>
     </div>
     <span id="count">150</span> characters remaining <br /><br />
@@ -59,27 +49,9 @@
       <label for="exampleFormControlInput1" class="form-label">Tags</label>
       <input type="tags" class="form-control" id="tags"" placeholder="tags" required>
     </div>
-    <button class="btn btn-outline-success" onclick="create()">Submit</button>  
+    <button class="btn btn-success" onclick="create()">Submit</button>  
   </div>
   </div>
-
-<!-- 
-    <div class="container">
-    <div class="mb-3">
-      <label for="exampleFormControlInput1" class="form-label">Author</label>
-      <input id="author" type="email" class="form-control" id="exampleFormControlInput1" placeholder="Name">
-    </div>
-    <div class="mb-3">
-      <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
-      <textarea id="content" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Tweet..tweet.."></textarea>
-    </div>
-    <span id="count">150</span> characters remaining <br /><br />
-    <div class="mb-3">
-      <label for="exampleFormControlInput1" class="form-label">Tags</label>
-      <input type="tags" class="form-control" id="tags"" placeholder="tags">
-    </div>
-    <button class="btn btn-outline-success" onclick="create()">Submit</button>
-  </div> -->
 
     <!-- div to display all posts -->
     <div id="listOfPosts"></div>

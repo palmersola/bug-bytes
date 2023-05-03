@@ -1,14 +1,14 @@
-/* h1 {
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-} */
-
-
 div {
   font-family: 'Playfair Display', serif;
 }
 
+h1 {
+  text-align: center;
+}
+
 .mainBody {
 background-color: #A4AC96;
+
 }
 
 
@@ -25,7 +25,6 @@ background-color: #A4AC96;
   margin: 15px;
   padding: 5px;
   box-sizing: border-box;
-  /* border-style: solid; */
   border-radius: 10px;
 
 
@@ -39,13 +38,12 @@ background-color: #A4AC96;
 
 }
 
-/* .postDate {
-  background-color: cadetblue;
-} */
-
 .postSection {
   text-align: center;
-  width: 400px;
+  width: 40%;
+  display:flex;
+  margin: auto;
+  padding-top: 30px;
 }
 
 .postAuthor {
@@ -54,23 +52,25 @@ background-color: #A4AC96;
 }
 
 .contentDiv {
-  /* width: 400px; */
-  /* margin: 30px; */
   padding: 10px; 
-  /* width: 200px; */
   max-width: 100%;
-background-color: white;
+  background-color: white;
   border-style: solid;
   border-width: thin;
   border-radius: 5px;
 
 }
 .postContent {
-  /* border-style: solid; */
   border-radius: 5px;
-  /* width: 100%; */
-  /* background-color: white; */
- width: 200px;
- /* word-break: break-all;  */
+  width: 200px;
+}
 
+
+.btn-success:hover {
+  background-color: #dee2e6 !important;
+  color: #5cb85c !important;
+}
+
+.navbar-brand {
+  font-size: 40px !important;
 }

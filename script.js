@@ -38,9 +38,12 @@ class AllPosts {
 
 let allPosts = new AllPosts();
 
-allPosts.create("Blah blah blah blah blah", "John Doe", "tag1, tag2, tag3");
-allPosts.create("This is some text", "Jane Smith", "word, word, word");
-allPosts.create("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua..", "George Last", "tags, tags, tags");
+allPosts.create("JavaScript is interesting but hard. I kind of like it but don't at the same time! &#128517;", "Kia", "javascript, interesting");
+allPosts.create('"Break your limits and outgrow yourself." - A reminder to let yourself grow from positivity energies. And Hooray.. We are almost done with Full-Stack-102! &#128578;', "Lee", "positivity, grow");
+allPosts.create("The Secret to Success for a Software Developer<br>One of the most important aspects of being a software developer is staying up to date with the latest technology trends. With new programming languages, frameworks, and tools emerging constantly, it's important to stay ahead of the curve to deliver the best possible solutions to clients.", "Carlos", "developer, engineer, programmer");
+allPosts.create("3 Struggles of a Beginner Coder<br>So you've decided to learn to code. It can be a lot of fun. But it can also be a frustrating at times. Here are 3 struggles that every beginner coder can relate to:<br> 1. You spend hours trying to figure out a bug, only to realize you forgot a semicolon.<br> 2. You try to write a function, but it keeps crashing.<br>3. You try to explain what you do to your friends and family, but they just stare at you blankly.", "Darranda", "struggles, beginner, coder");
+allPosts.create("This is some text", "Palmer", "word, word, word");
+
 
 //DOM manipulation to show all posts
 function displayAllPosts() {
