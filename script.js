@@ -66,6 +66,7 @@ function displayAllPosts(search) {
     postElement.innerHTML = `<div>
     <span class="postAuthor">${post.author}</span>
     <span class="postDate">${post.date}</span>
+    <button class="deleteButton" onclick="deletePost(${post.id})">Delete</button>
     </div>
     <div>
     <span class="postContent">${post.content}</span>
