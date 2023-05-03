@@ -66,6 +66,14 @@ class AllPosts {
 
 let allPosts = new AllPosts();
 
+allPosts.create("Blah blah blah blah blah", "John Doe", "tag1, tag2, tag3");
+allPosts.create("This is some text", "Jane Smith", "word, word, word");
+allPosts.create(
+  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua..",
+  "George Last",
+  "tags, tags, tags"
+);
+
 //DOM manipulation to show all posts
 function displayAllPosts(search) {
   let postList = document.getElementById("listOfPosts");
@@ -75,16 +83,19 @@ function displayAllPosts(search) {
   for (let i = 0; i < list.length; i++) {
     let post = list[i];
     let postElement = document.createElement("div");
+    postElement.classList.add("postCard");
 
-    postElement.innerHTML = `<div>
-    <span class="postAuthor">${post.author}</span>
+    postElement.innerHTML = `<div class="innerDiv">
+    <span class="postAuthor">${post.author}</span><br>
     <span class="postDate">${post.date}</span>
     </div>
-    <div>
-    <span class="postContent">${post.content}</span>
-    <span class="postTags">${post.tags}</span>
-    <button onclick="allPosts.delete(${post.id})">Delete</button>
-    <button onclick="update(${post.id})">Update</button>
+    <div class="innerDiv">
+    <div class="contentDiv">
+    <span class="postContent">${post.content}</span><br>
+    </div>
+    <span class="postTags">${post.tags}</span><br>
+    <button class="deleteButton btn btn-outline-success" onclick="allPosts.delete(${post.id})">Delete</button>
+    <button class="deleteButton btn btn-outline-success" onclick="update(${post.id})">Update</button>
     </div>`;
 
     postList.appendChild(postElement);
@@ -109,6 +120,14 @@ function create() {
     alert("Tweet something...");
   }
 }
+const characterCount = document.getElementById("content");
+const characterText = document.getElementById("count1");
+const MAX_CHARS = 150;
+
+characterCount.addEventListener("input", () => {
+  const remaining = MAX_CHARS - characterCount.value.length;
+  characterText.textContent = `${remaining} characters remaining`;
+});
 
 function update(id) {
   submitBtn.innerText = "Update";

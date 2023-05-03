@@ -17,36 +17,94 @@
       integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
       crossorigin="anonymous"
     ></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet" />
   </head>
   <body>
     <!--NAVBAR-->
-    <nav class="navbar bg-body-tertiary">
-      <div class="container-fluid">
-        <a class="navbar-brand">Bug Bytes</a>
-        <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-          <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
-      </div>
-    </nav>
+    <div class="navbarDiv">
+      <nav class="navbar bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand">Bug Bytes</a>
+          <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search by keywords" aria-label="Search" />
+            <button class="btn btn-outline-success" id="searchButton" type="submit">Search</button>
+          </form>
+        </div>
+      </nav>
+    </div>
 
-    <h1>BEST GROUP EVA</h1>
+    <!-- <h1>BEST GROUP EVA</h1> -->
 
-    <h3>Search Keywords</h3>
+    <!-- <h3>Search Keywords</h3>
     <input id="searchInput" type="text" placeholder="Enter keywords" />
-    <button id="searchButton">Search</button>
+    <button id="searchButton">Search</button> -->
 
     <!--create post-->
-    <h4>Create Post</h4>
+
+    <div class="mainBody">
+      <div class="postSection">
+        <!-- <h4>Create Post</h4>
     <textarea id="author" rows="5" maxlength="30" placeholder="Name"></textarea>
     <textarea id="content" rows="5" maxlength="150" placeholder="Tweet..tweet.."></textarea>
     <textarea id="tags" rows="5" maxlength="150" placeholder="add tags"></textarea>
     <br />
     <span id="count">150</span> characters remaining <br /><br />
-    <button id="submitBtn" onclick="updateCheck()">Submit</button>
+    <button class="btn btn-outline-success" onclick="create()">Submit</button> -->
 
-    <!-- div to display all posts -->
-    <div id="listOfPosts"></div>
+        <div class="container">
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Author</label>
+            <input
+              id="author"
+              type="email"
+              class="form-control"
+              id="exampleFormControlInput1"
+              placeholder="Name"
+              required
+            />
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
+            <textarea
+              id="content"
+              class="form-control"
+              id="exampleFormControlTextarea1"
+              rows="3"
+              placeholder="Tweet..tweet.."
+            ></textarea>
+          </div>
+          <span id="count">150</span> characters remaining <br /><br />
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Tags</label>
+            <input type="tags" class="form-control" id="tags"" placeholder="tags" required>
+          </div>
+          <button class="btn btn-outline-success" onclick="create()">Submit</button>
+        </div>
+      </div>
+
+      <!-- 
+    <div class="container">
+    <div class="mb-3">
+      <label for="exampleFormControlInput1" class="form-label">Author</label>
+      <input id="author" type="email" class="form-control" id="exampleFormControlInput1" placeholder="Name">
+    </div>
+    <div class="mb-3">
+      <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
+      <textarea id="content" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Tweet..tweet.."></textarea>
+    </div>
+    <span id="count">150</span> characters remaining <br /><br />
+    <div class="mb-3">
+      <label for="exampleFormControlInput1" class="form-label">Tags</label>
+      <input type="tags" class="form-control" id="tags"" placeholder="tags">
+    </div>
+    <button class="btn btn-outline-success" onclick="create()">Submit</button>
+  </div> -->
+
+      <!-- div to display all posts -->
+      <div id="listOfPosts"></div>
+    </div>
 
     <script src="script.js"></script>
     <script
@@ -54,5 +112,6 @@
       integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ"
       crossorigin="anonymous"
     ></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
   </body>
 </html>
