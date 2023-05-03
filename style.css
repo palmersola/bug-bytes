@@ -1,3 +1,12 @@
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background-color: #a4ac96 !important;
+}
+
 div {
   font-family: "Playfair Display", serif;
 }
@@ -6,13 +15,32 @@ h1 {
   text-align: center;
 }
 
-.mainBody {
-background-color: #A4AC96;
-
-}
-
 a {
   cursor: pointer;
+}
+
+.postSection {
+  align-items: center;
+  width: 100%;
+  display: flex;
+  margin: auto;
+  padding-top: 30px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-control {
+  min-width: 400px;
+  max-width: 650px;
+}
+
+#feedType {
+  text-align: center;
+  padding-top: 15px;
 }
 
 #listOfPosts {
@@ -36,22 +64,13 @@ a {
   align-self: flex-start;
   word-break: break-word;
 }
-
-.postSection {
-  text-align: center;
-  width: 40%;
-  display:flex;
-  margin: auto;
-  padding-top: 30px;
-}
-
 .postAuthor {
   font-weight: bold;
   font-size: 20px;
 }
 
 .contentDiv {
-  padding: 10px; 
+  padding: 10px;
   max-width: 100%;
   background-color: white;
   border-style: solid;
@@ -62,7 +81,6 @@ a {
   border-radius: 5px;
   width: 200px;
 }
-
 
 .btn-success:hover {
   background-color: #dee2e6 !important;
