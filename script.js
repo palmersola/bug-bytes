@@ -1,12 +1,19 @@
+const content = document.getElementById("content");
+const author = document.getElementById("author");
+const tags = document.getElementById("tags");
+const submitBtn = document.getElementById("submitBtn");
+let ifUpdate = false;
+let updateId;
+
 class Post {
   constructor(content, author, tags) {
     this.id = Math.round(new Date().getTime() + Math.random() * 100000);
     this.content = content;
     this.date = new Date().toLocaleDateString("en-us", {
-      weekday: "long",
-      year: "numeric",
-      month: "short",
-      day: "numeric",
+      weekday: "short",
+      year: "2-digit",
+      month: "2-digit",
+      day: "2-digit",
       hour: "numeric",
       minute: "numeric"
     });
@@ -23,27 +30,33 @@ class AllPosts {
     this.postList.push(new Post(content, author, tags));
     localStorage.setItem("posts", JSON.stringify(this.postList));
   }
-
   read() {
     // localStorage.getItem("posts")
     //   ? (this.postList = JSON.parse(localStorage.getItem("posts")))
     //   : localStorage.setItem("posts", JSON.stringify([]));
     // return this.postList;
 
-    let posts = [];
-    let keys = Object.keys(localStorage);
-    for (let i = 0; i < keys.length; i++) {
-      let key = keys[i];
-      let postString = localStorage.getItem(key);
-      let postObject = JSON.parse(postString);
-      posts.push(postObject);
-    }
-    this.postList = posts;
+    // let posts = [];
+    // let keys = Object.keys(localStorage);
+    // for (let i = 0; i < keys.length; i++) {
+    //   let key = keys[i];
+    //   let postString = localStorage.getItem(key);
+    //   let postObject = JSON.parse(postString);
+    //   posts.push(postObject);
+    // }
+    // this.postList = posts;
     return this.postList;
   }
 
-  update(id) {
-    console.log(id);
+  update() {
+    let update = this.postList.find(post => post.id === updateId);
+    console.log(update);
+    update.author = author.value;
+    update.content = content.value;
+    update.tags = tags.value;
+    ifUpdate = false;
+    submitBtn.innerText = "Submit";
+    displayAllPosts();
   }
   delete(id) {
     this.postList = this.postList.filter(post => post.id !== id);
@@ -66,30 +79,28 @@ function displayAllPosts(search) {
     postElement.innerHTML = `<div>
     <span class="postAuthor">${post.author}</span>
     <span class="postDate">${post.date}</span>
-    <button class="deleteButton" onclick="deletePost(${post.id})">Delete</button>
     </div>
     <div>
     <span class="postContent">${post.content}</span>
     <span class="postTags">${post.tags}</span>
-    <button onclick="allPosts.delete(${post.id})">DELETE</button>
-    <button onclick="allPosts.update(${post.id})">UPDATE</button>
+    <button onclick="allPosts.delete(${post.id})">Delete</button>
+    <button onclick="update(${post.id})">Update</button>
     </div>`;
 
     postList.appendChild(postElement);
   }
+  reset();
 }
 
 function create() {
-  const content = document.getElementById("content").value.trim();
-  const author = document.getElementById("author").value.trim();
-  const tags = document.getElementById("tags").value.trim();
+  const contentVal = content.value.trim();
+  const authorVal = author.value.trim();
+  const tagsVal = tags.value.trim();
   if (content !== "") {
-    if (content.length <= 150) {
-      allPosts.create(content, author, tags);
-      console.log(allPosts.postList);
+    if (contentVal.length <= 150) {
+      allPosts.create(contentVal, authorVal, tagsVal);
       displayAllPosts();
-
-      document.getElementById("content").value = " ";
+      content.value = " ";
       // document.getElementById("count").textContent = "150";
     } else {
       alert("Your tweet exceeded the character amount.");
@@ -98,6 +109,24 @@ function create() {
     alert("Tweet something...");
   }
 }
+
+function update(id) {
+  submitBtn.innerText = "Update";
+  let update = allPosts.postList.find(post => post.id === id);
+  console.log(update);
+  updateId = update.id;
+  ifUpdate = true;
+  author.value = update.author;
+  content.value = update.content;
+  tags.value = update.tags;
+}
+
+const updateCheck = () => (ifUpdate ? allPosts.update() : create());
+const reset = () => {
+  author.value = "";
+  content.value = "";
+  tags.value = "";
+};
 
 displayAllPosts();
 
