@@ -89,6 +89,14 @@ function create() {
     alert("Tweet something...");
   }
 }
+const characterCount = document.getElementById("content");
+const characterText = document.getElementById("count1");
+const MAX_CHARS = 150;
+
+characterCount.addEventListener('input', () => {
+  const remaining = MAX_CHARS - characterCount.value.length;
+  characterText.textContent = `${remaining} characters remaining`;
+})
 
 function deletePost(id) {
   allPosts.delete(id);
