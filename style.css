@@ -1,5 +1,5 @@
 div {
-  font-family: 'Playfair Display', serif;
+  font-family: "Playfair Display", serif;
 }
 
 h1 {
@@ -11,31 +11,30 @@ background-color: #A4AC96;
 
 }
 
+a {
+  cursor: pointer;
+}
 
 #listOfPosts {
   display: flex;
   flex-direction: row;
-  flex-wrap:wrap;
+  flex-wrap: wrap;
   justify-content: center;
 }
 
 .postCard {
-  width:400px;
+  width: 400px;
   background-color: antiquewhite;
   margin: 15px;
   padding: 5px;
   box-sizing: border-box;
   border-radius: 10px;
-
-
-
 }
 
 #listOfPosts .innerDiv {
   width: auto;
   align-self: flex-start;
   word-break: break-word;
-
 }
 
 .postSection {
@@ -58,7 +57,6 @@ background-color: #A4AC96;
   border-style: solid;
   border-width: thin;
   border-radius: 5px;
-
 }
 .postContent {
   border-radius: 5px;
