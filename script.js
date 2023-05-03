@@ -2,7 +2,7 @@ class Post {
   constructor(content, author, tags) {
     this.id = Math.round(new Date().getTime() + Math.random() * 100000);
     this.content = content;
-    this.date = new Date().toLocaleDateString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric", hour: "numeric", minute: "numeric"});
+    this.date = new Date().toLocaleDateString('en-us', { weekday:"short", year:"2-digit", month:"2-digit", day:"2-digit", hour: "numeric", minute: "numeric"});
     this.author = author;
     this.tags = tags;
   }
@@ -38,6 +38,10 @@ class AllPosts {
 
 let allPosts = new AllPosts();
 
+allPosts.create("Blah blah blah blah blah", "John Doe", "tag1, tag2, tag3");
+allPosts.create("This is some text", "Jane Smith", "word, word, word");
+allPosts.create("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua..", "George Last", "tags, tags, tags");
+
 //DOM manipulation to show all posts
 function displayAllPosts() {
   let postList = document.getElementById("listOfPosts");
@@ -47,15 +51,19 @@ function displayAllPosts() {
   for (let i = 0; i < allPosts.postList.length; i++) {
     let post = allPosts.postList[i];
     let postElement = document.createElement("div");
+    postElement.classList.add("postCard")
 
-    postElement.innerHTML = `<div>
-    <span class="postAuthor">${post.author}</span>
+    postElement.innerHTML = `<div class="innerDiv">
+    <span class="postAuthor">${post.author}</span><br>
     <span class="postDate">${post.date}</span>
-    <button class="deleteButton" onclick="deletePost(${post.id})">Delete</button>
+
     </div>
-    <div>
-    <span class="postContent">${post.content}</span>
-    <span class="postTags">${post.tags}</span>
+    <div class="innerDiv">
+    <div class="contentDiv">
+    <span class="postContent">${post.content}</span><br>
+    </div>
+    <span class="postTags">${post.tags}</span><br>
+    <button class="deleteButton btn btn-outline-success" onclick="deletePost(${post.id})">Delete</button>
     </div>`;
 
     postList.appendChild(postElement);
@@ -115,3 +123,6 @@ function search(keywords) {
   // Return filtered
   return filteredPosts;
 }
+
+
+displayAllPosts();
