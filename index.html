@@ -10,6 +10,22 @@
   <body>
     <h1>BEST GROUP EVA</h1>
 
+    <h3>Search Keywords</h3>
+    <input id="searchInput" type="text" placeholder="Enter keywords" />
+    <button id="searchButton">Search</button>
+
+    <!--create post-->
+    <h4>Create Post</h4>
+    <textarea id="author" rows="5" maxlength="30" placeholder="Name"></textarea>
+    <textarea id="content" rows="5" maxlength="150" placeholder="Tweet..tweet.."></textarea>
+    <textarea id="tags" rows="5" maxlength="150" placeholder="add tags"></textarea>
+    <br />
+    <span id="count">150</span> characters remaining <br /><br />
+    <button onclick="create()">Submit</button>
+
+    <!-- div to display all posts -->
+    <div id="listOfPosts"></div>
+
     <script src="script.js"></script>
   </body>
 </html>
