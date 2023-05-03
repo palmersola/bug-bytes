@@ -2,7 +2,7 @@ class Post {
   constructor(content, author, tags) {
     this.id = Math.round(new Date().getTime() + Math.random() * 100000);
     this.content = content;
-    this.date = new Date();
+    this.date = new Date().toLocaleDateString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric", hour: "numeric", minute: "numeric"});
     this.author = author;
     this.tags = tags;
   }
@@ -107,20 +107,3 @@ function search(keywords) {
   // Return filtered
   return filteredPosts;
 }
-
-// Event listener for search button
-document.getElementById("searchButton").addEventListener("click", () => {
-  // Get keywords from the search
-  const keywords = document.getElementById("searchInput").value;
-
-  // Search for posts with keywords
-  const filteredPosts = search(keywords);
-
-  // Clear the existing
-  document.getElementById("listOfPosts").innerHTML = "";
-
-  // Add the filtered posts
-  for (const post of filteredPosts) {
-    document.getElementById("listOfPosts").appendChild(post);
-  }
-})
