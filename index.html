@@ -26,9 +26,15 @@
     <div class="navbarDiv">
       <nav class="navbar bg-body-tertiary">
         <div class="container-fluid">
-          <a class="navbar-brand">Bug Bytes</a>
+          <a class="navbar-brand" onclick="displayAllPosts()">Bug Bytes</a>
           <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Search by keywords" aria-label="Search" />
+            <input
+              class="form-control me-2"
+              id="searchInput"
+              type="search"
+              placeholder="Search by keywords"
+              aria-label="Search"
+            />
             <button class="btn btn-outline-success" id="searchButton" type="submit">Search</button>
           </form>
         </div>
@@ -69,18 +75,19 @@
             <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
             <textarea
               id="content"
+              maxlength="150"
               class="form-control"
               id="exampleFormControlTextarea1"
               rows="3"
-              placeholder="Tweet..tweet.."
+              placeholder="What do you have to say?"
             ></textarea>
           </div>
-          <span id="count">150</span> characters remaining <br /><br />
+          <span id="count1">150</span> <br /><br />
           <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Tags</label>
             <input type="tags" class="form-control" id="tags"" placeholder="tags" required>
           </div>
-          <button class="btn btn-outline-success" onclick="create()">Submit</button>
+          <button id="submitBtn" class="btn btn-outline-success" onclick="updateCheck()">Submit</button>
         </div>
       </div>
 
@@ -103,6 +110,7 @@
   </div> -->
 
       <!-- div to display all posts -->
+      <h3 id="feedType">All Posts</h3>
       <div id="listOfPosts"></div>
     </div>
 

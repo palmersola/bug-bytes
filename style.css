@@ -2,41 +2,39 @@
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 } */
 
-
 div {
-  font-family: 'Playfair Display', serif;
+  font-family: "Playfair Display", serif;
 }
 
 .mainBody {
-background-color: #A4AC96;
+  background-color: #a4ac96;
 }
 
+a {
+  cursor: pointer;
+}
 
 #listOfPosts {
   display: flex;
   flex-direction: row;
-  flex-wrap:wrap;
+  flex-wrap: wrap;
   justify-content: center;
 }
 
 .postCard {
-  width:400px;
+  width: 400px;
   background-color: antiquewhite;
   margin: 15px;
   padding: 5px;
   box-sizing: border-box;
   /* border-style: solid; */
   border-radius: 10px;
-
-
-
 }
 
 #listOfPosts .innerDiv {
   width: auto;
   align-self: flex-start;
   word-break: break-word;
-
 }
 
 /* .postDate {
@@ -56,21 +54,19 @@ background-color: #A4AC96;
 .contentDiv {
   /* width: 400px; */
   /* margin: 30px; */
-  padding: 10px; 
+  padding: 10px;
   /* width: 200px; */
   max-width: 100%;
-background-color: white;
+  background-color: white;
   border-style: solid;
   border-width: thin;
   border-radius: 5px;
-
 }
 .postContent {
   /* border-style: solid; */
   border-radius: 5px;
   /* width: 100%; */
   /* background-color: white; */
- width: 200px;
- /* word-break: break-all;  */
-
+  width: 200px;
+  /* word-break: break-all;  */
 }

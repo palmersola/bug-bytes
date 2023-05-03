@@ -4,6 +4,7 @@ const tags = document.getElementById("tags");
 const submitBtn = document.getElementById("submitBtn");
 let ifUpdate = false;
 let updateId;
+const feedType = document.getElementById("feedType");
 
 class Post {
   constructor(content, author, tags) {
@@ -80,6 +81,7 @@ function displayAllPosts(search) {
   postList.innerHTML = "";
   let posts = allPosts.read();
   let list = search ? search : posts;
+  feedType.innerText = search ? "Search Results" : "All Posts";
   for (let i = 0; i < list.length; i++) {
     let post = list[i];
     let postElement = document.createElement("div");
@@ -107,17 +109,17 @@ function create() {
   const contentVal = content.value.trim();
   const authorVal = author.value.trim();
   const tagsVal = tags.value.trim();
-  if (content !== "") {
+  if (contentVal !== "" && authorVal !== "" && tagsVal !== "") {
     if (contentVal.length <= 150) {
       allPosts.create(contentVal, authorVal, tagsVal);
       displayAllPosts();
       content.value = " ";
       // document.getElementById("count").textContent = "150";
     } else {
-      alert("Your tweet exceeded the character amount.");
+      alert("Your Post exceeded the character amount.");
     }
   } else {
-    alert("Tweet something...");
+    alert("Post something...");
   }
 }
 const characterCount = document.getElementById("content");
@@ -156,8 +158,9 @@ displayAllPosts();
 // });
 
 // Event listener for search button
-document.getElementById("searchButton").addEventListener("click", () => {
+document.getElementById("searchButton").addEventListener("click", e => {
   // Get keywords from the search
+  e.preventDefault();
   const keywords = document.getElementById("searchInput").value;
   // Search for posts with keywords
   const filteredPosts = allPosts.postList.filter(post => post.tags == keywords);
